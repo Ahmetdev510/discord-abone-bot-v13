@@ -37,7 +37,7 @@ client.on("messageCreate",message => {
         if(message.attachments.first() == undefined) return message.reply({content: `Bu kanala sadece resim gönderebilirsin.`}).then(a=>{message.delete();setTimeout(() => { a.delete()}, 3000);}) 
         if(message.member.roles.cache.has(abonerol.id)) return message.reply({content: "Zaten abone rolün var."}).then(a=>{message.delete();setTimeout(() => { a.delete()}, 3000);});     
         ReadText(message.attachments.first().url).then(text => {
-            if(text.match("ABONEOLUNDU")){ 
+            if(text.match("ABONEOLUNDU") || text.match("ABONE OLUNDU")){
                 message.member.roles.add(abonerol).then(() => {
                     message.reply({content: "Abone rolün verildi."}).then(a=>{setTimeout(() => { a.delete()}, 3000);})
                     message.react("✅")
